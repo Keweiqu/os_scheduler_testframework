@@ -7,7 +7,7 @@ void func3(void *arg)
 
 void func2(void *arg)
 {
-	int ret = thread_create(func3, NULL);
+	int ret = thread_create(func3, NULL, 0);
 	printf("func2 before calling yield\n");
 	thread_yield();
 	ret = thread_join(ret);
@@ -16,7 +16,7 @@ void func2(void *arg)
 
 void func1(void *arg)
 {
-	int ret = thread_create(func2, NULL);
+	int ret = thread_create(func2, NULL, 0);
 	printf("func1 before calling yield\n");
 	thread_yield();
 	ret = thread_join(ret);
@@ -26,7 +26,7 @@ void func1(void *arg)
 int main()
 {
 	thread_libinit("fcfs");
-	int ret = thread_create(func1, NULL);
+	int ret = thread_create(func1, NULL, 0);
 	ret = thread_join(ret);
 	printf("Main exiting\n");
 	return 0;

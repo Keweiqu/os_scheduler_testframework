@@ -17,8 +17,8 @@ void func1(void *arg)
 int main()
 {
 	thread_libinit(FIFO);
-	ret = thread_create(func1, NULL);
-	int ret1 = thread_create(func2, NULL);
+	ret = thread_create(func1, NULL, 0);
+	int ret1 = thread_create(func2, NULL, 0);
 	ret1 = thread_join(ret1);
 	printf("Main exiting\n");
 	return 0;

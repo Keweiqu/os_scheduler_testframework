@@ -25,11 +25,11 @@ void func4(void *arg)
 int main()
 {
 	thread_libinit("fcfs");
-	int ret = thread_create(func1, NULL);
-	ret = thread_create(func2, NULL);
-	ret = thread_create(func3, NULL);
+	int ret = thread_create(func1, NULL, 0);
+	ret = thread_create(func2, NULL, 0);
+	ret = thread_create(func3, NULL, 0);
 	int ret1 = ret;
-	ret = thread_create(func4, NULL);
+	ret = thread_create(func4, NULL, 0);
 	join = ret;
 	ret = thread_join(ret1);
 	printf("Main exiting\n");

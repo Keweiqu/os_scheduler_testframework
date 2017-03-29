@@ -14,11 +14,11 @@ void func3(void *arg) {
 
 int main() {
   thread_libinit(FIFO);
-  int ret = thread_create(func1, NULL);
+  int ret = thread_create(func1, NULL, 0);
   ret = thread_join(ret);
-  ret = thread_create(func2, NULL);
+  ret = thread_create(func2, NULL, 0);
   ret = thread_join(ret);
-  ret = thread_create(func3, NULL);
+  ret = thread_create(func3, NULL, 0);
   ret = thread_join(ret);
   printf("Main exiting\n");
   return 0;

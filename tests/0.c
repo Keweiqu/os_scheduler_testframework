@@ -6,7 +6,7 @@ void func(void *arg) {
 
 int main() {
   thread_libinit(FIFO);
-  int ret = thread_create(func, NULL);
+  int ret = thread_create(func, NULL, 0);
   int j_ret = thread_join(ret);
   printf("Main exiting\n");
   return 0;

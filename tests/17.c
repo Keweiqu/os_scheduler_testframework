@@ -39,10 +39,10 @@ void func4(void *arg)
 int main()
 {
 	thread_libinit(SJF);
-	int ret = thread_create(func1, NULL);
-	ret = thread_create(func2, NULL);
-	ret = thread_create(func3, NULL);
-	ret = thread_create(func4, NULL);
+	int ret = thread_create(func1, NULL, 0);
+	ret = thread_create(func2, NULL, 0);
+	ret = thread_create(func3, NULL, 0);
+	ret = thread_create(func4, NULL, 0);
 	join = ret;
 	busy_wait(4);
 	ret = thread_join(ret);

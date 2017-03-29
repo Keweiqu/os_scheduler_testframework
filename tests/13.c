@@ -21,9 +21,9 @@ void func3(void *arg)
 int main()
 {
 	thread_libinit("fcfs");
-	int ret = thread_create(func1, NULL);
-	ret = thread_create(func2, NULL);
-	ret = thread_create(func3, NULL);
+	int ret = thread_create(func1, NULL, 0);
+	ret = thread_create(func2, NULL, 0);
+	ret = thread_create(func3, NULL, 0);
 	ret = thread_join(ret);
 	printf("Main exiting\n");
 	return 0;

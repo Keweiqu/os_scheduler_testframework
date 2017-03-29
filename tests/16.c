@@ -41,12 +41,12 @@ void func6(void *arg) {
 
 int main() {
   thread_libinit(SJF);
-  int retfirst = thread_create(func1, NULL);
-  int ret = thread_create(func2, NULL);
-  ret = thread_create(func3, NULL);
-  ret1 = thread_create(func4, NULL);
-  ret2 = thread_create(func5, NULL);
-  ret3 = thread_create(func6, NULL);
+  int retfirst = thread_create(func1, NULL, 0);
+  int ret = thread_create(func2, NULL, 0);
+  ret = thread_create(func3, NULL, 0);
+  ret1 = thread_create(func4, NULL, 0);
+  ret2 = thread_create(func5, NULL, 0);
+  ret3 = thread_create(func6, NULL, 0);
   busy_wait(4);
   ret = thread_join(retfirst);
   printf("Main exiting\n");

@@ -11,7 +11,7 @@ int main()
 	thread_libinit("fcfs");
 	int ret, j_ret, i;
 	for (i = 0 ;i < 99; i++) {
-		ret = thread_create(func, NULL);
+		ret = thread_create(func, NULL, 0);
 	}
 	j_ret = thread_join(ret);
 	printf("Main exiting\n");
