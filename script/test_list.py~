@@ -1,0 +1,9 @@
+"""
+Batch tests together into lists, where each list contains the 
+tuple (desc, file, expected)
+desc: a string describe the test
+file: the test
+"""
+FIFO_tests = [
+    
+    ]
