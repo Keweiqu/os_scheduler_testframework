@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: func1 before calling yield\nI am func1\nI am func2\nMain exiting\n
+ */
 int ret;
 void func2(void *arg)
 {

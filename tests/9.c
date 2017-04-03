@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: I am func3\nI am func2\nI am func1\nMain exiting\n
+ */
 int join[2];
 void func1(void *arg)
 {
@@ -20,7 +23,7 @@ void func3(void *arg)
 
 int main()
 {
-	thread_libinit("fcfs");
+	thread_libinit(FIFO);
 	int ret1 = thread_create(func1, NULL, 0);
 	int ret = thread_create(func2, NULL, 0);
 	join[0] = ret;

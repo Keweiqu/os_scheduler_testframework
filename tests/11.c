@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: I am func\nMain exiting\n
+ */
 void func(void *arg)
 {
 	thread_yield();
@@ -8,7 +11,7 @@ void func(void *arg)
 
 int main()
 {
-	thread_libinit("fcfs");
+	thread_libinit(FIFO);
 	int ret = thread_create(func, NULL, 0);
 	int j_ret = thread_join(ret);
 	printf("Main exiting\n");

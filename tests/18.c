@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+  Expected:: func1 before calling yield\nfunc2 before calling yield\nI am func1\nI am func3\nI am func2\nMain exiting\n
+*/
 void func3(void *arg)
 {
 	printf("I am func3\n");

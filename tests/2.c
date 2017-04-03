@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: I am func1\nI am func2\nI am func3\nMain exiting\n
+ */
 void func1(void *arg) {
   printf("I am func1\n");
 }

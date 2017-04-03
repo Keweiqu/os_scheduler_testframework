@@ -1,0 +1,7 @@
+class Testcase:
+    desc = None
+    expected = None
+    file = None
+    def __init__(self, file):
+        self.file = file
+        subprocess.run[""]

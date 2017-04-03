@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: Main exiting\n
+ */
 void func(void *arg) {
   printf("I am func\n");
 }

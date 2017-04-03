@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: func1 before calling yield\nI am func1\nfunc2 before calling yield\nfunc3 before calling yield\nMain exiting\n
+ */
 int join;
 void busy_wait(int n)
 {

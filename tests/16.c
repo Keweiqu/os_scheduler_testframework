@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+  Expected:: I am func4\nI am func5\nI am func6\nI am func1\nI am func2\nI am func3\nMain exiting\n
+*/
 int ret1, ret2, ret3;
 void busy_wait(int n) {
   int i, j;

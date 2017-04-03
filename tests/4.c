@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include "userthread.h"
+/*
+ Expected:: I am func1\nI am func2\nI am func3\nMain exiting\n
+ */
 void func1(void *arg)
 {
 	printf("I am func1\n");
@@ -17,7 +20,7 @@ void func3(void *arg)
 
 int main()
 {
-	thread_libinit("fcfs");
+	thread_libinit(FIFO);
 	int ret1 = thread_create(func1, NULL, 0);
 	int ret2 = thread_create(func2, NULL, 0);
 	int ret3 = thread_create(func3, NULL, 0);
