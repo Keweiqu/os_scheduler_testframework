@@ -12,6 +12,7 @@ args = parser.parse_args()
 class Test:
     dir = "."
     exec = "test"
+    timeout = 10
     def setup(self, dir):
         self.dir = dir
         os.environ['LD_LIBRARY_PATH'] = dir
@@ -27,17 +28,22 @@ class Test:
         if p1.wait() != 0:
             print("Compilation failed")
             return False
-        
-        p2 = subprocess.Popen(["./"+self.exec], env=os.environ, stdout=subprocess.PIPE)
-        p2.wait()
-        stdout,_ = p2.communicate()
+        try:
+            p2 = subprocess.run(["valgrind", "./"+self.exec], env=os.environ, stdout=subprocess.PIPE, timeout=self.timeout)
+        except subprocess.TimeoutExpired:
+            print("Timeout, killed")
+            return False
+
+        stdout = p2.stdout
         if stdout == testcase.expected:
             print("Passed")
             return True
         else:
             print("Failed - Not equal")
-            print(testcase.expected)
-            print(stdout)
+            print("Expected: ")
+            print(testcase.expected.decode('utf-8'))
+            print("Got: ")
+            print(stdout.decode('utf-8'))
             return False
     def teardown(self):
         # rm executable
@@ -50,10 +56,14 @@ class Test:
 if __name__ == "__main__":
     t = Test()
     t.setup(args.path)
-    cases = glob.glob(args.tests+"*.c")
+    cases = sorted(glob.glob(args.tests+"*.c"))
+    passed = 0
     for c in cases:
         case = Testcase(c)
-        print("Running test case " + case.file)
-        t.run(case)
+        print("Running test case " + case.file.split('/')[-1])
+        if t.run(case) == True:
+            passed += 1
         t.teardown()
         print("\n")
+    print("===============Tests Summary================")
+    print(str(passed) + '/' + str(len(cases)))
